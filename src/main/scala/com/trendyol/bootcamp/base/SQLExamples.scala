@@ -1,5 +1,6 @@
 package com.trendyol.bootcamp.base
 
+import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.{Encoders, SparkSession}
 
 /**
@@ -64,6 +65,7 @@ object SQLExamples {
     spark
       .sql("select event, count(*) from temp_click group by event")
       .show(false)
+
 
     /**
     * If you want to access data stored on Hive, you can access the table from spark sql

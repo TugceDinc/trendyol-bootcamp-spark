@@ -27,7 +27,7 @@ object RDDExamples {
     /**
       * Basic operations on RDD
       */
-    numbersRDD.foreach(println) // print for each line
+    numbersRDD.collect.foreach(println) // print for each line
     numbersRDD.foreachPartition(it => it.size) // do some operation on each partition
     println(s"RDD first element: ${numbersRDD.first()}")
     println(s"Count: ${numbersRDD.count()}")
@@ -92,14 +92,17 @@ object RDDExamples {
       * Sort RDD by key or value
       */
     // Sort words by counts (sort by value)
+
+    println(s"Short ")
     reducedWordCounts
       .sortBy(_._2) // sortBy(_._2, false) // for desc order
       .collect()
       .foreach(println)
 
     // Sort words alphabetically (sort by key)
+    println(s"Short alphabeticalyy")
     reducedWordCounts
-      .sortByKey(false) // sortByKey() // for asc order
+      .sortByKey(true) // sortByKey() // for asc order
       .collect()
       .foreach(println)
 
@@ -208,7 +211,7 @@ object MyFunctions {
     (for (i <- word.length - 1 to 0 by -1) yield word(i)).mkString
 }
 
-class MyClass {
+class MyClass extends Serializable{
   val prefix = "bootcamp_"
 
   def numToString(num: Int): String =

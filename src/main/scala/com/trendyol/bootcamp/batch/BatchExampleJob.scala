@@ -21,7 +21,7 @@ object BatchExampleJob {
 
     val initialStartTime     = "20210101"
     val yyyyMMddFormatter    = DateTimeFormatter.ofPattern("yyyyMMdd")
-    val currentTime          = LocalDateTime.now().truncatedTo(ChronoUnit.DAYS)
+    val currentTime          = LocalDateTime.of(2021,1,23,0,0).truncatedTo(ChronoUnit.DAYS)
     val formattedCurrentDate = currentTime.format(yyyyMMddFormatter)
 
     // If you want to see all logs, set log level to info
@@ -80,6 +80,7 @@ object BatchExampleJob {
       .partitionBy("partition_date")
       .mode(SaveMode.Append)
       .json("output/batch")
+
   }
 
 }

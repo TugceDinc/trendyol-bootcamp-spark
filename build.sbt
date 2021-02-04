@@ -2,9 +2,9 @@ name := "bootcamp-spark"
 
 version := "0.1"
 
-scalaVersion := "2.11.12"
+scalaVersion := "2.12.10"
 
-val sparkVersion = "2.4.3"
+val sparkVersion = "3.0.1"
 
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion,
